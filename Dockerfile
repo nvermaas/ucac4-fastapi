@@ -10,7 +10,7 @@ ENV PYTHONUNBUFFERED 1
 RUN mkdir /src
 WORKDIR /src
 COPY . /src/
-RUN pip install -r requirements/prod.txt
+RUN pip install -r requirements.txt
 CMD exec uvicorn main:app --reload
 
 # build the image like this:
