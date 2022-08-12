@@ -23,5 +23,5 @@ class Star(Base):
     ra = Column(Float, index=True)
     dec = Column(Float, index=True)
     j_mag = Column(Integer, index=True)
-
+    v_mag = Column(Integer, index=True)
 
