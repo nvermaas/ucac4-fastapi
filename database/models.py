@@ -1,8 +1,6 @@
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, Float, DateTime
-from sqlalchemy.orm import relationship
 
 from .database import Base
-
 
 class Asteroid(Base):
     __tablename__ = "transients_app_asteroid"
@@ -14,6 +12,7 @@ class Asteroid(Base):
     timestamp = Column(DateTime)
     ra = Column(Float)
     dec = Column(Float)
+
 
 # sql alchemy model
 class Star(Base):

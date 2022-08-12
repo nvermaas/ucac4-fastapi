@@ -18,6 +18,7 @@ class Asteroid(BaseModel):
     class Config:
         orm_mode = True
 
+
 class Star(BaseModel):
     zone: int
     mpos1: int

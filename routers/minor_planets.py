@@ -56,6 +56,6 @@ async def get_comet(name: str = Query(
 # http://127.0.0.1:8000/asteroids/
 # http://127.0.0.1:8000/asteroids/?skip=100&limit=100
 @router.get("/asteroids/", tags=["minor planets"], response_model=List[schemas.Asteroid])
-async def get_astroids(skip: int = 0, limit: int = 1000, db: Session = Depends(get_db)):
+async def get_asteroids(skip: int = 0, limit: int = 1000, db: Session = Depends(get_db)):
     items = crud.get_asteroids(db, skip=skip, limit=limit)
     return items
