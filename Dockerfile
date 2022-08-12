@@ -9,7 +9,8 @@ RUN mkdir /src
 WORKDIR /src
 COPY . /src/
 RUN pip install -r requirements.txt
-CMD exec uvicorn main:app --reload
+#CMD exec uvicorn main:app --reload
+CMD ["uvicorn", "app.main:app", "--proxy-headers", "--host", "0.0.0.0", "--port", "8000"]
 
 # build the image like this:
 # docker build -t ucac4-fastapi:latest .
