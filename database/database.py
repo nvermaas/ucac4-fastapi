@@ -8,8 +8,9 @@ from sqlalchemy.orm import sessionmaker
 #import databases
 
 
-#SQLALCHEMY_DATABASE_URL = "sqlite:///./astrobase.sqlite3"
-DATABASE_URL = "postgresql://postgres:postgres@localhost/ucac4"
+#DATABASE_URL = "postgresql://postgres:postgres@localhost/ucac4"
+# dev machine on SURFSara
+DATABASE_URL = "postgresql://postgres:secret@145.38.187.31/ucac4"
 #database = databases.Database(DATABASE_URL)
 
 metadata = sqlalchemy.MetaData()
