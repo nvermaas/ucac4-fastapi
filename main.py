@@ -1,6 +1,7 @@
 import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from database.database import my_database
 
 from routers import stars
 
@@ -30,6 +31,13 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.on_event("startup")
+async def startup():
+    await my_database.connect()
+
+@app.on_event("shutdown")
+async def shutdown():
+    await my_database.disconnect()
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
