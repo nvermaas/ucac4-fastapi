@@ -18,6 +18,7 @@ def get_db():
     finally:
         db.close()
 
+
 # http://127.0.0.1:8000/stars/
 # http://127.0.0.1:8000/stars/?skip=100&limit=100
 @router.get("/stars/", tags=["stars"], response_model=List[schemas.Star])
@@ -34,11 +35,9 @@ async def get_stars_rectangle(ra_min: float = 0.0, ra_max: float = 1.0,
 
 @timeit
 @router.get("/stars_rectangle_async/", tags=["stars"], response_model=List[schemas.Star])
-async def get_stars_rectangle(ra_min: float = 0.0, ra_max: float = 1.0,
+async def get_stars_rectangle_async(ra_min: float = 0.0, ra_max: float = 1.0,
                               dec_min: float = 0.0, dec_max: float = 1.0,
-                              j_mag: int = 10000, limit: int = 1000, db: Session = Depends(get_db)):
+                              j_mag: int = 10000, limit: int = 1000):
 
-    stars = Star.__table__
-    query = crud.get_rectangle_query(stars, ra_min=ra_min, ra_max=ra_max, dec_min=dec_min, dec_max=dec_max, j_mag=j_mag, limit=limit)
-    print(query)
+    query = crud.get_rectangle_query(Star.__table__, ra_min=ra_min, ra_max=ra_max, dec_min=dec_min, dec_max=dec_max, j_mag=j_mag, limit=limit)
     return await my_database.fetch_all(query)
