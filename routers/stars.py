@@ -33,6 +33,13 @@ async def get_stars_rectangle(ra_min: float = 0.0, ra_max: float = 1.0,
     items = crud.get_rectangle(db, ra_min=ra_min, ra_max=ra_max, dec_min=dec_min, dec_max=dec_max, j_mag=j_mag, limit=limit)
     return items
 
+
+@timeit
+@router.get("/stars_async/", tags=["stars"], response_model=List[schemas.Star])
+async def get_stars_async(skip: int = 0, limit: int = 1000):
+    query = crud.get_star_query(Star.__table__, skip=skip, limit=limit)
+    return await my_database.fetch_all(query)
+
 @timeit
 @router.get("/stars_rectangle_async/", tags=["stars"], response_model=List[schemas.Star])
 async def get_stars_rectangle_async(ra_min: float = 0.0, ra_max: float = 1.0,

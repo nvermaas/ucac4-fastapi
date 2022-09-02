@@ -1,0 +1,1 @@
+uvicorn main_psycopg2:app --reload
