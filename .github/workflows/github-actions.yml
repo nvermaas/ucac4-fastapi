@@ -14,6 +14,6 @@ jobs:
           script: |
              cd ~/my_docker/ucac4-fastapi
              git pull
-             docker build -t ucac4-fastapi:latest .
+             docker build -t ucac4-fastapi-psycopg2:latest -f ./Dockerfile_psycopg2
              cd $HOME/shared
              docker-compose -p dockernest up -d
