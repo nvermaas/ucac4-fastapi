@@ -2,7 +2,7 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from routers import stars
+from routers import stars_psycop2
 
 # https://fastapi.tiangolo.com/tutorial/sql-databases/
 
@@ -20,7 +20,7 @@ app = FastAPI(
         "url": "https://www.apache.org/licenses/LICENSE-2.0.html",
     },)
 
-app.include_router(stars.router)
+app.include_router(stars_psycop2.router)
 
 app.add_middleware(
     CORSMiddleware,

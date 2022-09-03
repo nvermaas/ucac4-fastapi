@@ -1,8 +1,9 @@
 from sqlalchemy import Column, Integer, String, Float, DateTime
-
-from .database import Base
+from sqlalchemy.ext.declarative import declarative_base
 
 # sql alchemy model
+Base = declarative_base()
+
 class Star(Base):
     __tablename__ = "stars"
     zone = Column(Integer, index=True)

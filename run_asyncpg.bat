@@ -1,0 +1,1 @@
+uvicorn main_asyncpg:app --reload
