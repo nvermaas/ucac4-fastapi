@@ -26,13 +26,13 @@ def get_hygdata(db: Session, skip: int = 0, limit: int = 1000):
     return db.query(HygData).offset(skip).limit(limit).all()
 
 @timeit
-def get_hygdata_rectangle(db: Session, ra_min: float = 0.0, ra_max: float = 1.0, dec_min: float = 0.0, dec_max: float = 1.0, j_mag: int = 10000, limit: int = 1000):
+def get_hygdata_rectangle(db: Session, ra_min: float = 0.0, ra_max: float = 1.0, dec_min: float = 0.0, dec_max: float = 1.0, magnitude: float = 10.0, limit: int = 1000):
     list = db.query(HygData).filter(
         HygData.RightAscension > ra_min,
         HygData.RightAscension < ra_max,
         HygData.Declination > dec_min,
         HygData.Declination < dec_max,
-        HygData.Magnitude < j_mag / 1000
+        HygData.Magnitude < magnitude
     ).limit(limit).all()
     print("retrieved "+str(len(list)) + ' stars')
     return list

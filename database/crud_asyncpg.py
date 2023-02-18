@@ -25,12 +25,12 @@ def get_hygdata_query(hygdata,  skip: int = 0, limit: int = 1000):
 
 
 @timeit
-def get_hygdata_rectangle(hygdata, ra_min: float = 0.0, ra_max: float = 1.0, dec_min: float = 0.0, dec_max: float = 1.0, j_mag: int = 10000, limit: int = 1000):
+def get_hygdata_rectangle(hygdata, ra_min: float = 0.0, ra_max: float = 1.0, dec_min: float = 0.0, dec_max: float = 1.0, magnitude: float = 10.0, limit: int = 1000):
     query = hygdata.select().where(
         HygData.RightAscension > ra_min,
         HygData.RightAscension < ra_max,
         HygData.Declination > dec_min,
         HygData.Declination < dec_max,
-        HygData.Magnitude < j_mag / 1000
+        HygData.Magnitude < magnitude
     ).limit(limit)
     return query
