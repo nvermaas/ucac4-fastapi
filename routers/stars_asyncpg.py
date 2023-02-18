@@ -37,3 +37,12 @@ async def get_stars_rectangle_async(ra_min: float = 0.0, ra_max: float = 1.0,
 async def get_stars_async(skip: int = 0, limit: int = 1000):
     query = crud_asyncpg.get_hygdata_query(HygData.__table__, skip=skip, limit=limit)
     return await my_database.fetch_all(query)
+
+@timeit
+@router.get("/hygdata_rectangle/", tags=["hygdata"], response_model=List[schemas.HygData])
+async def get_hygdata_rectangle_async(ra_min: float = 0.0, ra_max: float = 1.0,
+                              dec_min: float = 0.0, dec_max: float = 1.0,
+                              j_mag: int = 10000, limit: int = 1000):
+
+    query = crud_asyncpg.get_hygdata_rectangle(HygData.__table__, ra_min=ra_min, ra_max=ra_max, dec_min=dec_min, dec_max=dec_max, j_mag=j_mag, limit=limit)
+    return await my_database.fetch_all(query)
