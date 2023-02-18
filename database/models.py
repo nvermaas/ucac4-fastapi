@@ -13,3 +13,23 @@ class Star(Base):
     j_mag = Column(Integer, index=True)
     v_mag = Column(Integer, index=True)
 
+class HygData(Base):
+    __tablename__ = "hygdata"
+    id = Column(Integer, primary_key=True, index=True)
+    HipparcosID = Column(String)
+    HenryDraperID = Column(String)
+    HarvardRevisedID = Column(String)
+    GlieseID = Column(String)
+    BayerFlamsteed = Column(String)
+    ProperName = Column(String)
+    RightAscension = Column(Float, index=True)
+    Declination = Column(Float, index=True)
+    DistanceInParsecs = Column(Float)
+    Magnitude = Column(Float)
+    AbsoluteMagnitude = Column(Float)
+    SpectralType = Column(String)
+    ColorIndex = Column(String)
+    Bayer = Column(String)
+    Flamsteed = Column(String)
+    Constellation = Column(String)
+    Luminosity = Column(Float)

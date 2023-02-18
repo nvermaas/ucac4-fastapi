@@ -16,3 +16,26 @@ class Star(BaseModel):
 
     class Config:
         orm_mode = True
+
+class HygData(BaseModel):
+    id: int
+    HipparcosID: str
+    HenryDraperID: str
+    HarvardRevisedID: str
+    GlieseID: str
+    BayerFlamsteed: str
+    ProperName: str
+    RightAscension: float
+    Declination: float
+    DistanceInParsecs: float
+    Magnitude: float
+    AbsoluteMagnitude: float
+    SpectralType: str
+    ColorIndex: str
+    Bayer: str
+    Flamsteed: str
+    Constellation: str
+    Luminosity: float
+
+    class Config:
+        orm_mode = True

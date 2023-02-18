@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 
-from .models import Star
+from .models import Star, HygData
 from utils import timeit
 
 @timeit
@@ -17,4 +17,8 @@ def get_rectangle_query(stars, ra_min: float = 0.0, ra_max: float = 1.0, dec_min
         Star.dec < dec_max,
         Star.j_mag < j_mag
     ).limit(limit)
+    return query
+
+def get_hygdata_query(hygdata,  skip: int = 0, limit: int = 1000):
+    query = hygdata.select().offset(skip).limit(limit)
     return query

@@ -33,3 +33,15 @@ async def get_stars_rectangle(ra_min: float = 0.0, ra_max: float = 1.0,
     items = crud.get_rectangle(db, ra_min=ra_min, ra_max=ra_max, dec_min=dec_min, dec_max=dec_max, j_mag=j_mag, limit=limit)
     return items
 
+@router.get("/hygdata/", tags=["hygdata"], response_model=List[schemas.HygData])
+async def get_hygdata(skip: int = 0, limit: int = 1000, db: Session = Depends(get_db)):
+    # http://127.0.0.1:8000/hygdata/?skip=100&limit=100
+    items = crud.get_hygdata(db, skip=skip, limit=limit)
+    return items
+
+@router.get("/hygdata_rectangle/", tags=["hygdata"], response_model=List[schemas.HygData])
+async def get_hygdata_rectangle(ra_min: float = 0.0, ra_max: float = 1.0,
+                              dec_min: float = 0.0, dec_max: float = 1.0,
+                              j_mag: int = 10000, limit: int = 1000, db: Session = Depends(get_db)):
+    items = crud.get_hygdata_rectangle(db, ra_min=ra_min, ra_max=ra_max, dec_min=dec_min, dec_max=dec_max, j_mag=j_mag, limit=limit)
+    return items
