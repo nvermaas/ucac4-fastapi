@@ -16,5 +16,6 @@ jobs:
              git pull
              docker build -t ucac4-fastapi-psycopg2:latest -f ./Dockerfile_psycopg2
              docker build -t ucac4-fastapi-asyncpg:latest -f ./Dockerfile_asyncpg
+             docker build -t ucac4-fastapi-psycopg2:latest .
              cd $HOME/shared
              docker-compose -p dockernest up -d
