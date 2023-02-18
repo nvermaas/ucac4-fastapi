@@ -14,8 +14,10 @@ jobs:
           script: |
              cd ~/my_docker/ucac4-fastapi
              git pull
-             docker build -t ucac4-fastapi-psycopg2:latest -f ./Dockerfile_psycopg2
-             docker build -t ucac4-fastapi-asyncpg:latest -f ./Dockerfile_asyncpg
+             cp Dockerfile_psycopg2 Dockerfile
              docker build -t ucac4-fastapi-psycopg2:latest .
+             cp Dockerfile_asyncpg Dockerfile
+             docker build -t ucac4-fastapi-asyncpg:latest .
+             rm Dockerfile
              cd $HOME/shared
              docker-compose -p dockernest up -d
