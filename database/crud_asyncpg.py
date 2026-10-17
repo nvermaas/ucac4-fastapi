@@ -1,4 +1,3 @@
-from sqlalchemy.orm import Session
 
 from .models import Star, HygData
 from utils import timeit
