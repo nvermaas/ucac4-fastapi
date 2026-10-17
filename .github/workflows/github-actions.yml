@@ -1,5 +1,6 @@
 name: build-deploy-ucac4-fastapi
-on: [push]
+on:
+  workflow_dispatch:
 jobs:
   build-deploy-ucac4-fastapi:
     runs-on: ubuntu-latest
