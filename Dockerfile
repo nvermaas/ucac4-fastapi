@@ -10,6 +10,7 @@ ENV PYTHONUNBUFFERED 1
 RUN mkdir /src
 WORKDIR /src
 COPY . /src/
+RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 #CMD exec uvicorn main:app --reload
 CMD ["uvicorn", "main_psycopg2:app", "--proxy-headers", "--host", "0.0.0.0", "--port", "8000"]
